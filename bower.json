@@ -1,0 +1,25 @@
+{
+  "name": "tuningprojects",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Ivan Borisov"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "angular": "^1.5.1",
+    "angular-resource": "^1.5.1",
+    "angular-route": "^1.5.1"
+  }
+}
