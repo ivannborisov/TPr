@@ -1,0 +1,24 @@
+{
+  "name": "tuningprojects",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivannborisov/TPr.git"
+  },
+  "author": "Ivan Borisov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivannborisov/TPr/issues"
+  },
+  "homepage": "https://github.com/ivannborisov/TPr#readme"
+}
