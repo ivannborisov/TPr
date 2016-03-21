@@ -4,9 +4,7 @@
     function MainController () {
         var vm = this;
 
-        vm.title = "Titlee";
-
-
+        vm.title = "Tuning projects ";
     }
 
 

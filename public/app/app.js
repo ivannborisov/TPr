@@ -35,9 +35,9 @@
                     controller: 'UserListCtrl',
                     resolve: routeRoleChecks.admin
                 })
-                .when('/qkoqko', {
-                    templateUrl :'partials/cars/index',
-                    controller:'MainController'
+                .when('/signup', {
+                    templateUrl :'partials/account/signup',
+                    controller:'SignUpCtrl'
                 });
         });
 

@@ -17,10 +17,13 @@
         $scope.logout = function() {
             auth.logout()
                 .then(function(){
-                        notifier.success('logout');
+                    if ($scope.user) {
                         $scope.user.username = '';
                         $scope.user.password = '';
-                        $location.path('/');
+                    }
+                    notifier.success('logout');
+
+                    $location.path('/');
                 });
 
         }

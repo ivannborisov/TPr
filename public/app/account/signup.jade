@@ -1,0 +1,15 @@
+h1 Registration
+
+form(name="signUpForm")
+   fieldset
+      legend Create New User
+         label(for="first-name") First Name
+            input.form-control(type="text", placeholder="First Name", ng-model="user.firstName", required)
+         label(for="last-name") Last Name
+            input(type="text", placeholder="Last Name", ng-model="user.lastName", required)
+         label(for="username") Username
+            input(type="text", placeholder="Username", ng-model="user.username", required)
+         label(for="password") Password
+            input(type="password", placeholder="Password", ng-model="user.password", required)
+         button(ng-click="signup(user)", ng-disabled="signUpForm.$invalid") Create
+         a(href="/") Cancel

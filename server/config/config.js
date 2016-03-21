@@ -10,7 +10,7 @@ module.exports = {
     production:{
 
         rootPath: rootPath,
-        db: 'mongodb://tuningprojects:741963456@ds033255.mongolab.com:33255/tuningprojects',
+        db: '',
         port: process.env.PORT || 3030
     }
 

@@ -3,6 +3,20 @@
     angular.module('app')
         .factory('auth', function ($http,$q, identity, UsersResource) {
            return {
+               signup: function (user){
+                   var user = new UsersResource(user);
+                   var deffered = $q.defer();
+
+                   user.$save().then(function () {
+                       identity.currentUser = user;
+                       deffered.resolve();
+                   },function (res){
+                       deffered.reject(res);
+                   });
+
+
+                   return deffered.promise;
+               },
                login:function (user){
                     var deffered = $q.defer();
 
@@ -12,7 +26,6 @@
 
                                var user = new UsersResource();
                                angular.extend(user, response.data.user);
-                               console.log(user);
                                identity.currentUser = user;
                                deffered.resolve(true);
                            }
