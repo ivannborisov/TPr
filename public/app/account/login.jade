@@ -1,0 +1,11 @@
+div(ng-controller="LoginCtrl")
+   form(ng-hide="identity.isAuthenticated()")
+      input(type="text", ng-model="user.username")
+      input(type="password" ng-model="user.password")
+      input(type="submit",value="Send", ng-click="login(user)")
+
+
+   div(ng-show="identity.isAuthenticated()", style="color:white;")
+      | {{identity.currentUser.username}}
+      a(href="#", ng-click="logout()") Sign out
+      a(href="/admin/users", ng-show="identity.currentUser.isAdmin()") Users

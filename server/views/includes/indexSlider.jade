@@ -1,0 +1,8 @@
+#main-slider(ng-controller='SliderController as vm' , ng-show='vm.isActive("/")')
+
+   #main-slider-main-img
+      img(ng-src='{{vm.mainPr.img}}')
+   p
+      | Most viewed projects
+   .main-slider-small-img(ng-repeat='pr in vm.smallPrs')
+      img(ng-src='{{pr.img}}', ng-mouseover='vm.changeImg(pr)')

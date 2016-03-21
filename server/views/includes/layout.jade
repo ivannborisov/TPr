@@ -1,0 +1,25 @@
+﻿doctype
+html
+    head
+        base(href="/")
+        meta(charset="UTF-8")
+        title Tuning projects
+        link(rel="stylesheet" href="/css/styles.css")
+    body(ng-app = "app" ,ng-cloak,  ng-controller="MainController as vm" )
+    header
+        #header-wrapper
+            a(href="/")
+                #logo
+                    | TuningProjects-bg.com
+
+
+            div(ng-include="'partials/account/login'")
+    nav
+        ul
+            li
+                a(href="/cars") Автомобили
+            li
+                a(href="/motorbikes") Мотори
+    block main-content
+    include scripts
+    include currentUser

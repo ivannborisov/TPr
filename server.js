@@ -7,12 +7,12 @@ var app = express();
 
 var config = require('./server/config/config')[env];
 require('./server/config/express')(app, config);
+require('./server/config/mongoose')(config);
+require('./server/config/passport')();
+require('./server/config/routes')(app);
 
 
-app.get('*',function (req, res ){
-    res.write('Qkoooo');
-    res.end();
-});
+
 
 app.listen(config.port);
 console.log('Server running on port: ' +config.port);
