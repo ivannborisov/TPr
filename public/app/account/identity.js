@@ -4,9 +4,9 @@
     angular.module('app')
         .factory('identity' , function($window, UsersResource){
             var user;
-            if($window.bootStrappedUserObject) {
+            if($window.bootstrappedUserObject) {
                 user = new UsersResource();
-                angular.extend(user, $window.bootStrappedUserObject)
+                angular.extend(user, $window.bootstrappedUserObject)
             }
             return {
                 currentUser:user,

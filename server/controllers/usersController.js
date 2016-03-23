@@ -2,6 +2,26 @@ var encryption = require('../utilities/encryption');
 var User = require('mongoose').model('User');
 
 module.exports = {
+
+    updateUser: function(req, res, next) {
+        console.log(req.body);
+
+        if(req.user._id == req.body._id){
+
+            var updatedUserData = req.body;
+            if(updatedUserData.password && updatedUserData.password.length >0){
+                updatedUserData.salt = encryption.generateSalt();
+                updatedUserData.hashPass = encryption.generateHashedPassword(updatedUserData.password, updatedUserData.salt );
+            }
+
+            User.update({_id: req.body._id}, updatedUserData, function(){
+                res.end();
+            });
+        }
+        else {
+            res.send({reason: 'Dont have permission!'});
+        }
+    },
     createUser: function(req, res, next) {
         var newUserData = req.body;
         newUserData.salt = encryption.generateSalt();
@@ -27,6 +47,6 @@ module.exports = {
                 console.log('Users could not be loaded'+ err);
             }
             res.send(collection);
-        })
+        });
     }
 }

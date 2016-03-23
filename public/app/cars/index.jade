@@ -1,2 +1,8 @@
 div(style="clear:both;")
    h1 Cars
+   div
+       h3 Search
+       input(type="text", ng-model="search")
+       select(ng-model="sort",ng-options="item.value as item.text for item in sortOption")
+   div(ng-repeat="project in projects | filter: search | orderBy: sort")
+       a(href="cars/{{project._id}}")  {{ project.title }}

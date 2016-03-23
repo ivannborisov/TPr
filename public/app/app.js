@@ -12,11 +12,16 @@
         .config(function ($routeProvider, $locationProvider){
             $locationProvider.html5Mode(true);
 
-            var routeRoleChecks = {
-                admin : {
-                    auth:function(auth){
+            var routeUserChecks = {
+                adminRole : {
+                    authenticate:function(auth){
                         return auth.isAuthorizedForRole('admin');
                     }
+                },
+                authenticated: {
+                    authenticate: function (auth) {
+                        return auth.isAuthenticated();
+                    }    
                 }
             }
 
@@ -28,12 +33,21 @@
                 })
                 .when('/cars',{
                     templateUrl :'partials/cars/index',
-                    controller:'MainController'
+                    controller:'CarsCtrl'
+                })
+                .when('/cars/:id',{
+                    templateUrl :'partials/cars/details',
+                    controller:'CarDetailsCtrl'
                 })
                 .when('/admin/users', {
                     templateUrl: 'partials/admin/users-list',
                     controller: 'UserListCtrl',
-                    resolve: routeRoleChecks.admin
+                    resolve: routeUserChecks.adminRole
+                })
+                .when('/profile', {
+                    templateUrl :'partials/account/profile',
+                    controller:'ProfileCtrl',
+                    resolve: routeUserChecks.authenticated
                 })
                 .when('/signup', {
                     templateUrl :'partials/account/signup',

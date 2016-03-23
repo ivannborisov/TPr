@@ -17,6 +17,21 @@
 
                    return deffered.promise;
                },
+               update: function(user){
+
+                   var deffered = $q.defer();
+                   var updatedUser = new UsersResource(user);
+                   updatedUser._id = identity.currentUser._id;
+                   updatedUser.$update().then(function(){
+                       identity.currentUser.firstName = updatedUser.firstName;
+                       identity.currentUser.lastName = updatedUser.lastName;
+                       deffered.resolve();
+                   },function(response){
+                       deffered.reject(response);
+                   });
+
+                   return deffered.promise;
+               },
                login:function (user){
                     var deffered = $q.defer();
 
@@ -44,6 +59,14 @@
                                deffered.resolve();
                        });
                    return deffered.promise;
+               },
+               isAuthenticated: function (){
+                   if(identity.isAuthenticated()){
+                       return true;
+                   }
+                   else {
+                       return $q.reject('not authorized');
+                   }
                },
                isAuthorizedForRole: function(role) {
                    if (identity.isAuthorizedForRole(role)) {

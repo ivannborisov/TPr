@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    user = require('../models/User');
+    user = require('../models/User'),
+    projects = require('../models/Cars');
 
 
 module.exports = function (config) {
@@ -20,5 +21,7 @@ module.exports = function (config) {
     db.on('error',function (err){
         console.log('Database error' + err);
     });
+
+    projects.seedInitialProjects();
 }
 

@@ -12,7 +12,7 @@ module.exports = function (app, config){
     app.set('views' ,config.rootPath+'/server/views');
     app.use(cookieParser());
     app.use(bodyParser());
-    app.use(session({'secret': 'Iborisov987456321159753'}))
+    app.use(session({'secret': 'Iborisov987456321159753', resave: true, saveUninitialized: true}))
     app.use(stylus.middleware(
         {
             src: config.rootPath + '/public',
@@ -24,11 +24,13 @@ module.exports = function (app, config){
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath + '' + '/public'));
-    //app.use(function (req,res,next){
-    //    if(req.user){
-    //        console.log(req.user.username);
-    //    }
-    //    next();
-    //});
+
+
+    app.use(function (req,res,next){
+        if(req.user){
+            console.log(req.user.username);
+        }
+        next();
+    });
 
 }
