@@ -1,0 +1,11 @@
+h1 {{vm.create}}
+
+
+form(name="createProjectForm")
+   fieldset
+      legend Create New Project
+         label(for="title") Title
+            input(type="text", placeholder="Title", ng-model="project.title", required)
+
+         button(ng-click="vm.createProject(project)", ng-disabled="createProjectForm.$invalid") Create
+         a(href="/") Cancel

@@ -39,6 +39,11 @@
                     templateUrl :'partials/cars/details',
                     controller:'CarDetailsCtrl'
                 })
+                .when('/project/create', {
+                    templateUrl :'partials/projects/create-project',
+                    controller:'ProjectCreateCtrl as vm',
+                    resolve: routeUserChecks.authenticated
+                })
                 .when('/admin/users', {
                     templateUrl: 'partials/admin/users-list',
                     controller: 'UserListCtrl',

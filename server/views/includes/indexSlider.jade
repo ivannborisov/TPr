@@ -1,8 +1,10 @@
 #main-slider(ng-controller='SliderController as vm' , ng-show='vm.isActive("/")')
 
    #main-slider-main-img
-      img(ng-src='{{vm.mainPr.img}}')
-   p
+      img(ng-src='imgs/uploads/{{vm.mainPr.mainImg}}')
+      p {{vm.mainPr.title}}
+   h3
       | Most viewed projects
    .main-slider-small-img(ng-repeat='pr in vm.smallPrs')
-      img(ng-src='{{pr.img}}', ng-mouseover='vm.changeImg(pr)')
+      img(ng-src='imgs/uploads/{{pr.mainImg}}', ng-mouseover='vm.changeImg(pr)')
+      p {{pr.title}}

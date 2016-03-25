@@ -5,8 +5,6 @@
 
 body
   font-size 16px
-[ng\:cloak],[ng-cloak], .ng-cloak
-  display none !important
 
 nav  , #header-wrapper , #main-slider,section
   width 100%
@@ -32,7 +30,8 @@ header
       color: white
 
 nav
-
+  position relative
+  z-index 999
 
   ul
     list-style-type none
@@ -50,7 +49,7 @@ nav
 
   img
     width 100%
-  p
+  h3
     float right
     width 29.5%
     background black
@@ -62,17 +61,31 @@ nav
     text-align center
 
   #main-slider-main-img
+    border 1 px solid yellow
     width 70%
     float left
-   
+
+    p
+
+      font-size:3em
+      color white
+      position:absolute
+      top: 50%
     img
       max-height: 627px
 .main-slider-small-img
   width 14%
-  margin 0.2%
+  margin 0.2% 0.2% 0% 0.2%
   float left
   padding 0px
 
+  img
+    margin 0
+  p
+    margin 0
+    position relative
+    background #cccccc
+    color: #FFF
 section
-  clear both
+  float left
   background red

@@ -1,8 +1,8 @@
-var carController = require('./carsController');
+var projectsController = require('./projectsController');
 var usersController = require('./usersController');
 
 
 module.exports = {
     users: usersController,
-    cars: carController
+    projects: projectsController
 }

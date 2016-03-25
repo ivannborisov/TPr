@@ -5,6 +5,7 @@ html
         meta(charset="UTF-8")
         title Tuning projects
         link(rel="stylesheet" href="/css/styles.css")
+        link(rel="stylesheet" href="/css/ngcloak.css")
     body(ng-app = "app" ,ng-cloak,  ng-controller="MainController as vm" )
     header
         #header-wrapper
@@ -20,6 +21,7 @@ html
                 a(href="/cars") Автомобили
             li
                 a(href="/motorbikes") Мотори
+
     block main-content
     include scripts
     include currentUser

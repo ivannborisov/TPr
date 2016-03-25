@@ -8,5 +8,6 @@ div(ng-controller="LoginCtrl")
    div(ng-show="identity.isAuthenticated()", style="color:white;")
       | {{identity.currentUser.firstName}} {{identity.currentUser.lastName}}
       a(href="/profile") Profile
+      a(href="/project/create") Create Project
       a(href="#", ng-click="logout()") Sign out
       a(href="/admin/users", ng-show="identity.currentUser.isAdmin()") Users

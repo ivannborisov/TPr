@@ -1,21 +1,37 @@
 (function () {
 
-    function SliderController($interval,$location){
+    function SliderController($http, $interval,$location, ProjectResource, projects){
         var vm = this;
+        var prNum;
 
 
-        var projects = [{img:'imgs/audi1.jpg', prName:'Audi 1'} ,
-            {img:'imgs/audi3.jpg', prName:'Audi 2'} ,
-            {img:'imgs/audi3.jpg', prName:'Audi 3'},
-            {img:'imgs/audi3.jpg', prName:'Audi 4'},
-            {img:'imgs/audi3.jpg', prName:'Audi 5'},
-            {img:'imgs/audi3.jpg', prName:'Audi 6'},
-            {img:'imgs/audi3.jpg', prName:'Audi 7'},
-            {img:'imgs/audi3.jpg', prName:'Audi 8'},];
+
+        function getProjects () {
+            console.log('**********************************************************************');
+            ProjectResource.query().$promise.then(function (results) {
+                vm.mainPr = results[0];
+                vm.smallPrs = results.slice(0,8);
+                prNum = results.length;
+            });
+        }
+        getProjects();
 
 
-        vm.mainPr = projects[0];
-        vm.smallPrs = projects;
+        var int = $interval(function() {
+            if(prNum){
+                console.log('Check for new projects');
+                projects.checkForNewProjects(prNum)
+                    .then(function(res){
+                        if(res){
+                            vm.mainPr = res.projects[0];
+                            vm.smallPrs = res.projects;
+                            prNum = res.projectsLength;
+                            console.log(prNum);
+                        }
+                    });
+            }
+        },3500);
+
 
 
         vm.changeImg = function(project){
@@ -31,5 +47,5 @@
 
 
     angular.module('app.controllers')
-        .controller('SliderController', ['$interval', '$location', SliderController]);
+        .controller('SliderController', ['$http','$interval', '$location','ProjectResource','projects', SliderController]);
 }());
